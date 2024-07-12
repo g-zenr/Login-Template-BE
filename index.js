@@ -1,17 +1,32 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const userRoutes = require('./routes/userRoutes');
+require("dotenv").config();
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const connectDb = require("./config/dbConnectionConfig.js");
+const { constants } = require("./config/constantsConfig.js");
 
-dotenv.config();
-connectDB();
-
+const PORT = process.env.PORT || constants.PORT;
 const app = express();
 
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
+app.use(require("./config/corsConfig.js"));
+app.use(require("./config/sessionConfig.js"));
 
-const PORT = process.env.PORT || 5000;
+app.use(require("./middleware/conditionalTokenValidation.js"));
 
-app.listen(PORT, console.log(`Server running on port ${PORT}`));
+app.use(require("./routes/mainRoute.js"));
+app.use("/api", require("./routes/userRoute.js"));
+
+app.use(require("./middleware/errorHandler.js"));
+
+connectDb()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`${constants.SUCCESS.SERVER} ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error(`${constants.ERROR.CONNECTION_FAILED}`, error);
+  });
