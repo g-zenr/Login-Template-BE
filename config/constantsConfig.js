@@ -6,7 +6,7 @@ exports.constants = {
   },
 
   DB: {
-    URI: "mongodb+srv://darielvavila:zBfQYoLDo7XHAPmB@pisara.k0fhfeo.mongodb.net/?retryWrites=true&w=majority&appName=Pisara",
+    URI: "mongodb+srv://Zero:zero1234@login.b6xhjrr.mongodb.net/?retryWrites=true&w=majority&appName=LOGIN",
   },
 
   STATUS: {
@@ -63,17 +63,6 @@ exports.constants = {
       UPDATE_FAILED: "An error occurred during the update.",
       INVALID_ID: "Invalid user ID",
     },
-
-    PROJECT: {
-      NOT_FOUND: "Project not found",
-      ALREADY_EXISTS: "Project already exists",
-      UPDATE_FAILED: "An error occurred during the update.",
-      REQUIRED_FIELDS: "Please fill all fields",
-      MEMBER_EXISTS: "Member already exists in the project",
-      MEMBER_NOT_FOUND: "Member not found in the project",
-      INVALID_ID: "Invalid project ID",
-      INVALID_USER_ID: "Invalid user ID",
-    },
   },
 
   SUCCESS: {
@@ -86,14 +75,6 @@ exports.constants = {
       UPDATE: "Update successful",
       DELETE: "Delete successful",
     },
-
-    PROJECT: {
-      CREATE: "Project created successfully",
-      UPDATE: "Update successful",
-      DELETE: "Delete successful",
-      DEACTIVATE: "Member deactivated",
-      ACTIVATE: "Member activated",
-    },
   },
 
   VALIDATION: {
@@ -102,29 +83,12 @@ exports.constants = {
       PASSWORD: "password",
       ID: "id",
     },
-
-    PROJECT: {
-      PROJECT_NAME: "projectName",
-      DESCRIPTION: "description",
-      ID: "id",
-      ADD_MEMBER: "userId",
-      PROJECT_ID: "projectId",
-
-      PARAM: {
-        PROJECT_ID: "projectId",
-      },
-    },
   },
 
   POPULATE: {
-    PROJECT: {
-      PATH: "members.userId",
-      SELECT: "firstname lastname email role",
-    },
-
     USER: {
       PATH: "createdBy",
-      SELECT: "firstname lastname role",
+      SELECT: "firstname lastname",
     },
   },
 
